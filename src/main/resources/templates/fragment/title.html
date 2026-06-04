@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head(title)">
+    <div th:fragment="header">
+        <html lang="ja">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="title">
+        <title th:text="${title}">Voyage Note</title>
+        <h1>Voyage Note</h1>
+        <ul class="link">
+            <li><a href="/">ホーム</a></li>
+            <li><a href="/about">このサイトについて</a></li>
+            <li><a href="/books/new">本の登録</a></li>
+            <li><a href="/search">本の検索</a></li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

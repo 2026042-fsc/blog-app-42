@@ -1,0 +1,35 @@
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #6db33f;
+    font-size: 1.6rem;
+    font-weight: bold;
+    border-bottom: 2px solid lightgray;
+    padding-inline: 24px;
+}
+
+.link {
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    list-style-type: none;
+    gap: 16px;
+}
+
+.link a {
+    font-weight: normal;
+    color: #34302d;
+    text-decoration: none;
+}
+
+body {
+    color: #34302d;
+    font-family: sans-serif;
+}
+
+.main {
+    max-width: 640px;
+    padding-inline: 24px;
+    text-align: center;
+}
