@@ -1,72 +1,78 @@
 body {
-    /* 背景をくすんだ温かみのあるニュアンスカラー（グレージュ系）に変更 */
     background-color: #f4f1ea;
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
     color: #333;
-    padding: 20px;
+    padding: 20px 0; /* 左右の余白はmain側で制御するため上下のみに */
+    margin: 0;
 }
 
-/* タイトルの見た目も少しおしゃれに */
+.main {
+    max-width: 1500px; /* 画面が広がりすぎないように上限を設定 */
+    margin: 0 auto;
+    padding-inline: 24px; /* 左右の余白を程よい幅に調整 */
+    box-sizing: border-box;
+}
+
 h1 {
     color: #4e6a4f;
     font-size: 1.8rem;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 24px;
 }
 
+/* 💡 白い枠のスタイル */
 .block {
-    /* コンテンツの箱を真っ白にして、背景とのメリハリを出す */
     background-color: #ffffff;
-    display: flex;
-    align-items: flex-start;
-
-    /* 角を丸める（12px） */
     border-radius: 12px;
-
-    /* ほんのり上品な影をつけて立体感を出す */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-
-    /* 箱の内側に余裕を持たせる */
-    padding: 15px;
     margin-bottom: 20px;
-    /* <br>の代わりにCSSで隙間を作ります */
     overflow: hidden;
-    /* 画像の角も一緒に丸めるための設定 */
+    transition: opacity 0.2s, transform 0.2s; /* 👈 transformの「s」の漏れを修正 */
 }
 
-/* 画像の角も箱に合わせて少し丸める */
+.block:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* 💡 <a>タグが横並び（Flexbox）の主役になるように設定 */
+.block a {
+    display: flex;
+    align-items: center; /* 画像とテキストを上下中央で揃える */
+    padding: 5px;       /* 内側の余白をaタグに持たせて枠全体をクリック可能に */
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 20px;           /* 画像とテキストの間の隙間を一括制御 */
+}
+
+/* 画像のサイズと角丸の調整 */
 .block img {
+    height: 150px;       
     border-radius: 8px;
-    object-fit: cover;
-    /* 画像が歪まないようにきれいに収める */
+    object-fit: contain;   /* 縦横比を崩さず綺麗にくり抜く */
+    flex-shrink: 0;      /* 画面が狭くなっても画像が潰れないように固定 */
 }
 
+/* テキスト全体の並び */
 .text-content {
-    padding-left: 20px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    /* 題名と作者名の間の隙間をちょうどよくあける */
+    gap: 8px;            /* タイトルと作者の間の隙間 */
 }
 
-/* 題名のスタイル調整 */
+/* 題名のスタイル（間延びしていた原因を修正） */
 .title {
-    font-size: 1.4rem;
-    line-height: 3;
+    font-size: 1.2rem;   /* 枠に合わせて少し見やすいサイズに調整 */
+    line-height: 1.4;    /* 3 から 1.4 に縮めて不自然な縦の広がりを解消 */
     color: #2c3e50;
-    /* 深みのある紺色寄りのグレー */
     margin: 0;
-    padding-left: 20px;
 }
 
-/* 作者名のスタイル調整 */
+/* 作者名のスタイル */
 .author {
     font-size: 0.85rem;
     color: #8e8e93;
-    /* 上品な明るいグレー */
     margin: 0;
-    padding-left: 20px;
-}
-
-main{
-    padding-inline: 60px;
 }

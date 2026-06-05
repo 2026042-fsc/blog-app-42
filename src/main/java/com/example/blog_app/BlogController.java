@@ -1,14 +1,23 @@
 package com.example.blog_app;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import java.util.Optional;
+
 
 @Controller
 public class BlogController {
+    private final BlogRepojitory blogRepojitory;
+
+    public BlogController(BlogRepojitory blogRepojitory) {
+        this.blogRepojitory = blogRepojitory;
+    }
+
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("blogs", blogRepojitory.home());
         return "home";
     }
 
@@ -22,13 +31,13 @@ public class BlogController {
         return "search";
     }
 
-    @GetMapping("/ID_1")
-    public String ID_1() {
-        return "ID_1";
-    }
-
-    @GetMapping("/blog/{id}")
-    public String detail(@PathVariable Long id) {
+    @GetMapping("/Blog/{id}")
+    public String detail(@PathVariable int id, Model model) {
+        Optional<Blog> BlogOpt = blogRepojitory.searchByid(id);
+        if (BlogOpt.isEmpty()) {
+            return "redirect:/";
+        }
+        model.addAttribute("blog",BlogOpt.get());
         return "blog/detail";
     }
 
