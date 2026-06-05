@@ -1,37 +1,38 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/home.css">
-    <title>home</title>
 </head>
 
 <body>
-    <h1>Voyage Note</h1>
-    <h1>おすすめ</h1>
-    <div class="block">
-        <img src="/image/ID_1.jpg" alt="ID_1" width="100px">
-        <div class="text-conntent">
-            <h2 Class="title">白ワンピースと青い海。日常を脱出して、私を甘やかす夏旅へ</h2>
-            <p class="author">水野 遥</p>
-        </div>
-    </div>
+
+    <div th:replace="~{/fragment/title :: header}"></div>
     <br>
-    <div class="block">
-        <img src="/image/ID_2.jpg" alt="ID_2" width="100px">
-        <div class="text-conntent">
-            <h2 Class="title">都会の真ん中で見つけた、自分だけの自由。青いドレスと晴れやかな時間</h2>
-            <p class="author">白石 葵</p>
-        </div>
-    </div>
+    <link rel="stylesheet" href="/CSS/home.css">
     <br>
-    <div class="block">
-        <img src="/image/ID_3.jpg" alt="ID_3" width="100px">
-        <div class="text-conntent">
-            <h2 Class="title">大自然の懐に抱かれて。壮大な峡谷を進む、心が震えるボート旅</h2>
-            <p class="author">木村 拓海</p>
+    <div class="main">
+        <h1>おすすめ</h1>
+        <div class="block">
+            <img src="/image/ID_1.jpg" alt="ID_1" width="100px">
+            <div class="text-conntent">
+                <h2 Class="title">白ワンピースと青い海。日常を脱出して、私を甘やかす夏旅へ</h2>
+                <p class="author">水野 遥</p>
+            </div>
+        </div>
+        <br>
+        <div class="block">
+            <img src="/image/ID_2.jpg" alt="ID_2" width="100px">
+            <div class="text-content">
+                <h2 Class="title">都会の真ん中で見つけた、自分だけの自由。青いドレスと晴れやかな時間</h2>
+                <p class="author">白石 葵</p>
+            </div>
+        </div>
+        <br>
+        <div class="block">
+            <img src="/image/ID_3.jpg" alt="ID_3" width="100px">
+            <div class="text-content">
+                <h2 Class="title">大自然の懐に抱かれて。壮大な峡谷を進む、心が震えるボート旅</h2>
+                <p class="author">木村 拓海</p>
+            </div>
         </div>
     </div>
 </body>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+</head>
+
+<body>
+    <div th:replace="~{/fragment/title :: header}"></div>
+    <br>
+    <link rel="stylesheet" href="/CSS/createNewBlog.css">
+
+    <div class="main">
+        <h1>投稿</h1>
+        <form action="/tasks" method="post">
+            <label class="required-label">タイトル</label>
+            <input type="text" name="notes" placeholder="タイトル" class="input-title" required><br>
+
+            <label class="required-label">本文</label>
+            <textarea name="task" placeholder="本文" class="input-body" rows="8" required></textarea><br>
+
+            <label class="required-label">画像</label>
+            <div class="file-wrapper">
+                <label>アイキャッチ画像：</label>
+                <input type="file" name="image" accept="image/*" class="input-file" required>
+            </div><br>
+            <label class="required-label">作者名</label>
+            <input type="text" name="task" placeholder="作者名" class="input-author" required><br>
+
+            <div class="bottom">
+                <input type="submit" value="保存" class="btn-submit">
+                <a class="btn-cancel" href="/">キャンセル</a>
+            </div>
+        </form>
+    </div>
+</body>

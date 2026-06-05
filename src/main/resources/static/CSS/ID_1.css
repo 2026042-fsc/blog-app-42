@@ -21,7 +21,7 @@ body {
     
     /* 【変更】横幅は基本100%にしつつ、最大でも650px以上広がらないようにしてスッキリさせる */
     width: 100%;
-    max-width: 650px; 
+    max-width: 1500px; 
     box-sizing: border-box;
 }
 

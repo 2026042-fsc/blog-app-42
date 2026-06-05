@@ -1,35 +1,53 @@
+/* ヘッダー全体の枠組み */
 .title {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    color: #6db33f;
-    font-size: 1.6rem;
-    font-weight: bold;
+    width: 100%;
+    /* 画面の横幅いっぱいに広げる */
+    box-sizing: border-box;
+    /* パディングを含めたサイズ計算にする */
     border-bottom: 2px solid lightgray;
+    /* 下線 */
     padding-inline: 24px;
+    /* 左右の余白 */
 }
 
+/* タイトルとリンクを左右に分けるコンテナ */
+.place {
+    display: flex;
+    justify-content: space-between;
+    /* 左端と右端に引き離す */
+    align-items: center;
+    /* 上下の中心を揃える */
+    width: 100%;
+    /* 親要素（.title）の中でいっぱいに広げる */
+}
+
+/* リンク全体のスタイル */
 .link {
     display: flex;
     font-size: 20px;
     align-items: center;
     list-style-type: none;
     gap: 16px;
+    margin: 0;
+    /* 余計なスキマをリセット */
+    padding: 0;
+    /* 余計なスキマをリセット */
 }
 
 .link a {
     font-weight: normal;
-    color: #34302d;
+    color: #2b8fa3;
+    /* リンクの文字色（濃いグレー） */
     text-decoration: none;
 }
 
-body {
-    color: #34302d;
-    font-family: sans-serif;
-}
-
-.main {
-    max-width: 640px;
-    padding-inline: 24px;
-    text-align: center;
+/* h1タグ自体の余白が邪魔をしないようにリセット */
+.place h1 {
+    color: #2b8fa3;
+    /* タイトルの文字色（黄緑） */
+    margin: 0;
+    font-size: 1.6rem;
+    /* もしタイトル文字の大きさを変えたいならここ */
 }

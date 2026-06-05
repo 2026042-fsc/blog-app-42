@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
-<head th:fragment="head(title)">
-    <div th:fragment="header">
-        <html lang="ja">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/style.css">
+<head th:replace="~{/fragment/title :: head('Blog詳細')}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Voyage Note</title>
 </head>
 
 <body>
-    <div class="title">
-        <title th:text="${title}">Voyage Note</title>
-        <h1>Voyage Note</h1>
-        <ul class="link">
-            <li><a href="/">ホーム</a></li>
-            <li><a href="/about">このサイトについて</a></li>
-            <li><a href="/books/new">本の登録</a></li>
-            <li><a href="/search">本の検索</a></li>
-        </ul>
+    <div th:fragment="header" class="title">
+        <link rel="stylesheet" href="/CSS/style.css">
+        <div class="place">
+            <h1>Voyage Note</h1>
+            <ul class="link">
+                <li><a href="/">home</a></li>
+                <li><a href="/about">about blog</a></li>
+                <li><a href="/create/createNewBlog">create</a></li>
+                <li><a href="/search">search</a></li>
+            </ul>
+        </div>
     </div>
 
 </body>
