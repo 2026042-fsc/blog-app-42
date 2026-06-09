@@ -22,7 +22,7 @@ public class BlogRepojitory {
 
     public List<Blog> home() {
         List<Blog> blogs = new ArrayList<>();
-        String spl = "SELECT id,title,text,image,author FROM blog";
+        String spl = "SELECT id,title,text,image,author,created_at FROM blog";
         try (Connection conn = dataSource.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(spl);
                 ResultSet rs = stmt.executeQuery()) {
@@ -33,7 +33,10 @@ public class BlogRepojitory {
                         rs.getString("title"),
                         rs.getString("text"),
                         rs.getString("image"),
-                        rs.getString("author"));
+                        rs.getString("author"),
+                        rs.getString("created_at")
+                    
+                    );
                 blogs.add(blog);
             }
         } catch (SQLException e) {
@@ -43,7 +46,7 @@ public class BlogRepojitory {
     }
 
     public Optional<Blog> searchByid(int id) {
-        String sql = "SELECT id,title,text,image,author FROM blog WHERE id = ?";
+        String sql = "SELECT id,title,text,image,author,created_at FROM blog WHERE id = ?";
         try (Connection conn = dataSource.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -54,7 +57,9 @@ public class BlogRepojitory {
                             rs.getString("title"),
                             rs.getString("text"),
                             rs.getString("image"),
-                            rs.getString("author"));
+                            rs.getString("author"),
+                            rs.getString("created_at")
+                        );
                     return Optional.of(blog);
                 }
             }
@@ -65,12 +70,19 @@ public class BlogRepojitory {
         return Optional.empty();
     }
 
-    // public List<Blog> (){
+    public void save(Blog blog) {
+        String sql = "INSERT INTO blog (title, text,image,author,created_at) VALUES (?, ? ,? ,? ,NOW())";
+        try (Connection conn = dataSource.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
 
+            stmt.setString(1, blog.getTitle());
+            stmt.setString(2, blog.getText());
+            stmt.setString(3, blog.getImage());
+            stmt.setString(4, blog.getAuthor());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-// }
 
-// public Optinal<Blog> findByID(Long id){
-// return jdbcCilent.sql("SQLの内容 WHERE id == :id");
-// .param("id",id)
-// .query(Blog.class)
+}

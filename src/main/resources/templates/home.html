@@ -13,15 +13,14 @@
 
     <div class="main">
         <h1>おすすめ</h1>
-        <div class="block"th:each="blog : ${blogs}">
-                <a th:href="@{blog/{id}(id=${blog.id})}">
-                    <img th:src="@{'/image/' + ${blog.image}}" th:alt="${blog.title}" width="100px">
+        <div class="block" th:each="blog : ${blogs}">
+            <a th:href="@{blog/{id}(id=${blog.id})}">
+                <img th:src="${blog.image}" th:alt="${blog.title}" width="100px">
+                <div class="text-content">
+                    <h2 class="title" th:text="${blog.title}">白ワンピースと青い海。日常を脱出して、私を甘やかす夏旅へ</h2>
 
-                    <div class="text-content">
-                        <h2 class="title" th:text="${blog.title}">白ワンピースと青い海。日常を脱出して、私を甘やかす夏旅へ</h2>
-
-                        <p class="author" th:text="${blog.author}">水野 遥</p>
-                    </div>
+                    <p class="author" th:text="${blog.author}">水野 遥</p>
+                </div>
         </div>
         </a>
     </div>

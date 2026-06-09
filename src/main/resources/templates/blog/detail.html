@@ -8,11 +8,10 @@
     <div th:replace="~{/fragment/title :: header}"></div>
     <br>
     <div class="main-content">
-        <link rel="stylesheet" href="/CSS/ID_1.css">
+        <link rel="stylesheet" href="/CSS/detail.css">
         <div class="article-container">
             <h1 th:text="${blog.title}">白ワンピースと青い海。日常を脱出して、私を甘やかす夏旅へ</h1>
-            <img th:src="@{'/image/' + ${blog.image}}" th:alt="${blog.title}" width="100px">
-
+            <img th:src="${blog.image}" th:alt="${blog.title}" width="100px">
             <p class="body-text" th:text="${blog.text}">
                 うだるような暑さが続く毎日。ふと「どこか遠くへ行きたいな」なんてため息が漏れてしまうことはありませんか？そんな時、私の頭に浮かぶのは、決まって真っ青な海と白いワンピースの組み合わせです。
                 普段の生活では汚れが気になって敬遠しがちな白い服も、太陽が降り注ぐ夏の海辺なら話は別。むしろ景色に溶け込んで引き立ててくれる最高の主役になります。

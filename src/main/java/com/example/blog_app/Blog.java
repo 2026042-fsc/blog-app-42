@@ -6,15 +6,15 @@ public class Blog {
     private final String text;
     private final String image;
     private final String author;
-    // private final String created_at;
+    private final String created_at;
 
-    public Blog(int id, String title, String text, String image, String author) {
+    public Blog(int id, String title, String text, String image, String author, String created_at) {
         this.id = id;
         this.title = title;
         this.text = text;
         this.image = image;
         this.author = author;
-        // this.created_at = created_at;
+        this.created_at = created_at;
     }
 
     public int getId() {
@@ -36,8 +36,9 @@ public class Blog {
     public String getAuthor() {
         return author;
     }
-    // public String getCreated_at() {
-    // return created_at;
-    // }
+
+    public String getCreated_at() {
+        return created_at;
+    }
 
 }

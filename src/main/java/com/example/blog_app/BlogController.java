@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class BlogController {
@@ -42,9 +44,15 @@ public class BlogController {
     }
 
     @GetMapping("/create/createNewBlog")
-    public String createNewBlog(@ModelAttribute Blog blog) {
+    public String createNewBlog(Model model) {
+        model.addAttribute("blog", new Blog(0, "", "", "", "",""));
+        return "/create/createNewBlog";
+    }
 
-        return "redirect:/create/createNewBlog";
+    @PostMapping("/create/save")
+    public String saveBlog(@ModelAttribute Blog blog) {
+        blogRepojitory.save(blog);
+        return "redirect:/";
     }
 
 }

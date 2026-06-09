@@ -10,7 +10,8 @@
 
     <div class="main">
         <h1>投稿</h1>
-        <form action="/tasks" method="post">
+        <form action="/create/save" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="0">
             <label class="required-label">タイトル</label>
             <input type="text" name="title" placeholder="タイトル" class="input-title" required><br>
 
@@ -18,12 +19,9 @@
             <textarea name="text" placeholder="本文" class="input-body" rows="8" required></textarea><br>
 
             <label class="required-label">画像</label>
-            <div class="file-wrapper">
-                <label>アイキャッチ画像：</label>
-                <input type="file" name="image" accept="image/*" class="input-file" required>
-            </div><br>
+                <input type="text" name="image"  class="input-file" required>
             <label class="required-label">作者名</label>
-            <input type="text" name="auther" placeholder="作者名" class="input-author" required><br>
+            <input type="text" name="author" placeholder="作者名" class="input-author" required><br>
 
             <div class="bottom">
                 <input type="submit" value="保存" class="btn-submit">
