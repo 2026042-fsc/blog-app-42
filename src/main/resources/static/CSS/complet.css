@@ -1,0 +1,27 @@
+body {
+    background-color: #f4f1ea;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+    color: #333;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.main {
+    padding-inline: 24px;
+    box-sizing: border-box;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #4e6a4f;
+    font-size: 1.8rem;
+    margin-top: 20px;
+    margin-bottom: 24px;
+}
+.home {
+    color: #68686c;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
