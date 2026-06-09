@@ -35,8 +35,8 @@ public class BlogRepojitory {
                         rs.getString("image"),
                         rs.getString("author"),
                         rs.getString("created_at")
-                    
-                    );
+
+                );
                 blogs.add(blog);
             }
         } catch (SQLException e) {
@@ -58,8 +58,7 @@ public class BlogRepojitory {
                             rs.getString("text"),
                             rs.getString("image"),
                             rs.getString("author"),
-                            rs.getString("created_at")
-                        );
+                            rs.getString("created_at"));
                     return Optional.of(blog);
                 }
             }
@@ -83,6 +82,13 @@ public class BlogRepojitory {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<Blog> searchByTitle(String keyword) {
+        return jdbcClient.sql("SELECT title, text,image FROM blog WHERE title Like :keyword")
+                .param("keyword", "%" + keyword + "%")
+                .query(blog.class)
+                .list();
     }
 
 }
