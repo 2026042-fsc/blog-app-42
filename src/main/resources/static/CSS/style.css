@@ -51,3 +51,11 @@
     font-size: 1.6rem;
     /* もしタイトル文字の大きさを変えたいならここ */
 }
+.created_at {
+    clear: both;
+    font-size: 0.85rem;
+    color: #8e8e93;
+    margin-top: 30px;
+    margin-bottom: 0;
+    text-align: right;
+}
