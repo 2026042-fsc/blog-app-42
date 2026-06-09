@@ -14,7 +14,7 @@
     <div class="main">
         <h1>おすすめ</h1>
         <div class="block"th:each="blog : ${blogs}">
-                <a href="@{'/blog/'+${blog.id}}">
+                <a th:href="@{blog/{id}(id=${blog.id})}">
                     <img th:src="@{'/image/' + ${blog.image}}" th:alt="${blog.title}" width="100px">
 
                     <div class="text-content">

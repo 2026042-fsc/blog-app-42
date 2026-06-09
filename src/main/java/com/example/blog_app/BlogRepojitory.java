@@ -43,7 +43,7 @@ public class BlogRepojitory {
     }
 
     public Optional<Blog> searchByid(int id) {
-        String sql = "SELECT id,title,image,author FROM blog WHERE id = ?";
+        String sql = "SELECT id,title,text,image,author FROM blog WHERE id = ?";
         try (Connection conn = dataSource.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -64,7 +64,11 @@ public class BlogRepojitory {
 
         return Optional.empty();
     }
-}
+
+    // public List<Blog> (){
+
+    }
+// }
 
 // public Optinal<Blog> findByID(Long id){
 // return jdbcCilent.sql("SQLの内容 WHERE id == :id");
