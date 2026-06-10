@@ -61,8 +61,8 @@ public class BlogController {
     public String blog(@RequestParam(required = false) String keyword, Model model) {
   
         if (keyword != null && ! keyword.isBlank()) {
-            List<Blog> blog = blogRepository.searchByTitle(keyword);
-            model.addAttribute("blog",blog);
+            List<Blog> blogs = blogRepository.searchByTitle(keyword);
+            model.addAttribute("blogs",blogs);
         }
         model.addAttribute("keyword",keyword);
         return "search";

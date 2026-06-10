@@ -5,10 +5,11 @@ body {
     padding: 20px 0;
     margin: 0;
 }
+
 .main {
     padding-inline: 24px;
     box-sizing: border-box;
-    max-width: 640px;
+    max-width: 800px;
     /* 入力欄が広がりすぎないように制限 */
     margin: 0 auto;
     /* 中央寄せ */
@@ -20,6 +21,7 @@ h1 {
     margin-top: 20px;
     margin-bottom: 24px;
 }
+
 input[type="text"],
 textarea {
     width: 100%;
@@ -34,11 +36,13 @@ textarea {
     outline: none;
     transition: border-color 0.2s;
 }
+
 input[type="text"]:focus,
 textarea:focus {
     border-color: #4e6a4f;
     /* フォーカス時にオリーブ色に */
 }
+
 .required-label {
     display: block;
     /* 上下に並べる */
@@ -49,6 +53,7 @@ textarea:focus {
     margin-bottom: 6px;
     /* 入力欄とのすき間 */
 }
+
 .bottom {
     display: flex;
     align-items: center;
@@ -73,4 +78,68 @@ textarea:focus {
     text-decoration: none;
     font-size: 0.95rem;
     transition: color 0.2s;
+}
+
+.block {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.block:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* 💡 <a>タグが横並び（Flexbox）の主役になるように設定 */
+.block a {
+    display: flex;
+    align-items: center;
+    /* 画像とテキストを上下中央で揃える */
+    padding: 5px;
+    /* 内側の余白をaタグに持たせて枠全体をクリック可能に */
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 20px;
+    /* 画像とテキストの間の隙間を一括制御 */
+}
+
+/* 画像のサイズと角丸の調整 */
+.block img {
+    height: 150px;
+    border-radius: 8px;
+    object-fit: contain;
+    /* 縦横比を崩さず綺麗にくり抜く */
+    flex-shrink: 0;
+    /* 画面が狭くなっても画像が潰れないように固定 */
+}
+
+/* テキスト全体の並び */
+.text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* タイトルと作者の間の隙間 */
+}
+
+/* 題名のスタイル（間延びしていた原因を修正） */
+.title {
+    font-size: 1.2rem;
+    /* 枠に合わせて少し見やすいサイズに調整 */
+    line-height: 1.4;
+    /* 3 から 1.4 に縮めて不自然な縦の広がりを解消 */
+    color: #2c3e50;
+    margin: 0;
+}
+
+/* 作者名のスタイル */
+.author {
+    font-size: 0.85rem;
+    color: #8e8e93;
+    margin: 0;
 }

@@ -10,15 +10,34 @@
     <link rel="stylesheet" href="/CSS/search.css">
     <div class="main">
         <h1>検索</h1>
-        <form>
-            <input type="text" name="search" placeholder="検索タイトル" class="input-search"><br>
+        <form action="/search" method="get">
+            <label for="name">
+                <input input type="text" id="keyword" name="keyword" th:value="${keyword}" placeholder="記事タイトル"
+                    class="input-search">
+            </label>
+            <br>
+            <div class="bottom">
+                <input type="submit" value="保存" class="btn-submit">
+                <a class="btn-cancel" href="/">キャンセル</a>
+            </div>
         </form>
-        <div class="bottom">
-            <input type="submit" value="保存" class="btn-submit">
-            <a class="btn-cancel" href="/">キャンセル</a>
-            
-            <p>準備中</p>
+        <br>
+
+        <div th:if="${#strings.isEmpty(keyword)}">
+            <p>検索結果がここに出ます。キーワードを入れて検索してください。</p>
         </div>
+
+        <div class="block" th:each="blog : ${blogs}">
+            <a th:href="@{blog/{id}(id=${blog.id})}">
+                <img th:src="${blog.image}" th:alt="${blog.title}" width="100px">
+                <div class="text-content">
+                    <h2 class="title" th:text="${blog.title}">白ワンピースと青い海。日常を脱出して、私を甘やかす夏旅へ</h2>
+                    <p class="author" th:text="${blog.author}">水野 遥</p>
+                    <p class="created_at" th:text="${blog.created_at}">日にち</p>
+                </div>
+        </div>
+        </a>
+    </div>
 </body>
 
 </html>

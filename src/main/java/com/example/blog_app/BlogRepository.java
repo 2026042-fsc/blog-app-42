@@ -38,7 +38,7 @@ public class BlogRepository {
     }
 
     public List<Blog> searchByTitle(String keyword) {
-        return jdbcClient.sql("SELECT title, text,image FROM blog WHERE title Like :keyword")
+        return jdbcClient.sql("SELECT id,title, text,image,author,created_at FROM blog WHERE title Like :keyword")
                 .param("keyword", "%" + keyword + "%")
                 .query(Blog.class)
                 .list();
