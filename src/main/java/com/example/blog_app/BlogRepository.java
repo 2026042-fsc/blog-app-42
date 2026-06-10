@@ -14,12 +14,14 @@ public class BlogRepository {
         this.jdbcClient = jdbcClient;
     }
 
+    //ホームでの全件表示
     public List<Blog> home() {
         return jdbcClient.sql("SELECT id,title,text,image,author,created_at FROM blog")
                 .query(Blog.class)
                 .list();
     }
 
+        //詳細ページのID取得
     public Optional searchById(int id) {
        return jdbcClient.sql("SELECT id,title,text,image,author,created_at FROM blog WHERE id = :id")
                 .param("id", id)
@@ -27,6 +29,7 @@ public class BlogRepository {
                 .optional();
     }
 
+        //フォームの作成
     public void save(Blog blog) {
         jdbcClient.sql(
                 "INSERT INTO blog (id,title, text,image,author,created_at) VALUES (:title, :text ,:image ,:author ,NOW())")
@@ -37,6 +40,7 @@ public class BlogRepository {
                 .update();
     }
 
+            //検索
     public List<Blog> searchByTitle(String keyword) {
         return jdbcClient.sql("SELECT id,title, text,image,author,created_at FROM blog WHERE title Like :keyword")
                 .param("keyword", "%" + keyword + "%")
