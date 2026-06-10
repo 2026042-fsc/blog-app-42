@@ -11,18 +11,17 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
 public class BlogController {
-    private final BlogRepojitory blogRepojitory;
+    private final BlogRepository blogRepository;
 
-    public BlogController(BlogRepojitory blogRepojitory) {
-        this.blogRepojitory = blogRepojitory;
+    public BlogController(BlogRepository blogRepository) {
+        this.blogRepository = blogRepository;
     }
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("blogs", blogRepojitory.home());
+        model.addAttribute("blogs", blogRepository.home());
         return "home";
     }
 
@@ -31,14 +30,9 @@ public class BlogController {
         return "about";
     }
 
-    @GetMapping("/search")
-    public String search() {
-        return "search";
-    }
-
     @GetMapping("/blog/{id}")
     public String detail(@PathVariable int id, Model model) {
-        Optional<Blog> BlogOpt = blogRepojitory.searchByid(id);
+        Optional<Blog> BlogOpt = blogRepository.searchById(id);
         if (BlogOpt.isEmpty()) {
             return "redirect:/";
         }
@@ -48,24 +42,29 @@ public class BlogController {
 
     @GetMapping("/create/createNewBlog")
     public String createNewBlog(Model model) {
-        model.addAttribute("blog", new Blog(0, "", "", "", "",""));
+        model.addAttribute("blog", new Blog(0, "", "", "", "", ""));
         return "/create/createNewBlog";
     }
 
     @PostMapping("/create/save")
     public String saveBlog(@ModelAttribute Blog blog) {
-        blogRepojitory.save(blog);
+        blogRepository.save(blog);
         return "create/complet";
     }
+
     @GetMapping("create/complet")
     public String complet() {
         return "create/complet";
     }
-     @GetMapping("/search")
-    public String book(@RequestParam(required = false) String keyword, Model model) {
-        List<Book> books = bookService.search(keyword);
-        model.addAttribute("books", books);
-        model.addAttribute("keyword", keyword);
 
+    @GetMapping("/search")
+    public String blog(@RequestParam(required = false) String keyword, Model model) {
+  
+        if (keyword != null && ! keyword.isBlank()) {
+            List<Blog> blog = blogRepository.searchByTitle(keyword);
+            model.addAttribute("blog",blog);
+        }
+        model.addAttribute("keyword",keyword);
         return "search";
+    }
 }
