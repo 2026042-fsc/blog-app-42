@@ -1,12 +1,12 @@
 package com.example.blog_app;
 
 public class Blog {
-    private final int id;
-    private final String title;
-    private final String text;
-    private final String image;
-    private final String author;
-    private final String created_at;
+    private  int id;
+    private  String title;
+    private  String text;
+    private  String image;
+    private  String author;
+    private  String created_at;
 
     public Blog(int id, String title, String text, String image, String author, String created_at) {
         this.id = id;
@@ -20,6 +20,10 @@ public class Blog {
     public int getId() {
         return id;
     }
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     public String getTitle() {
         return title;

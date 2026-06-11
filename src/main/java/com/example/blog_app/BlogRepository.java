@@ -14,25 +14,25 @@ public class BlogRepository {
         this.jdbcClient = jdbcClient;
     }
 
-    //ホームでの全件表示
+    // ホームでの全件表示
     public List<Blog> home() {
-        return jdbcClient.sql("SELECT id,title,text,image,author,created_at FROM blog")
+        return jdbcClient.sql("SELECT id,title,text,image,author,created_at FROM blog ORDER BY created_at DESC")
                 .query(Blog.class)
                 .list();
     }
 
-        //詳細ページのID取得
-    public Optional searchById(int id) {
-       return jdbcClient.sql("SELECT id,title,text,image,author,created_at FROM blog WHERE id = :id")
+    // 詳細ページのID取得
+    public Optional<Blog> searchById(int id) {
+        return jdbcClient.sql("SELECT id,title,text,image,author,created_at FROM blog WHERE id = :id")
                 .param("id", id)
                 .query(Blog.class)
                 .optional();
     }
 
-        //フォームの作成
+    // フォームの作成
     public void save(Blog blog) {
         jdbcClient.sql(
-                "INSERT INTO blog (id,title, text,image,author,created_at) VALUES (:title, :text ,:image ,:author ,NOW())")
+                "INSERT INTO blog (id,title, text,image,author) VALUES (:title, :text ,:image ,:author ,NOW())")
                 .param("title", blog.getTitle())
                 .param("text", blog.getText())
                 .param("image", blog.getImage())
@@ -40,7 +40,18 @@ public class BlogRepository {
                 .update();
     }
 
-            //検索
+    // 編集フォーム
+    public void update(int id, String title, String text, String image, String author) {
+        jdbcClient.sql("UPDATE blog SET title=:title,text=:text,image=:image,author=:author WHERE id = :id")
+                .param("title", title)
+                .param("text", text)
+                .param("image", image)
+                .param("author", author)
+                .param("id", id)
+                .update();
+    }
+
+    // 検索
     public List<Blog> searchByTitle(String keyword) {
         return jdbcClient.sql("SELECT id,title, text,image,author,created_at FROM blog WHERE title Like :keyword")
                 .param("keyword", "%" + keyword + "%")

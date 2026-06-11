@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+</head>
+
+<body>
+    <div th:replace="~{/fragment/title :: header}"></div>
+    <br>
+    <link rel="stylesheet" href="/CSS/createNewBlog.css">
+
+    <div class="main">
+        <h1>編集</h1>
+        <form action="blog/{id}/edit" th:action="@{/blog/{id}(id=${blogId})}" method="post" enctype="multipart/form-data"
+            th:object="${blogForm}">
+            <input type="hidden" name="id" value="0">
+            <label class="required-label">タイトル</label>
+            <input type="text" th:field="*{title}" placeholder="タイトル" class="input-title" required><br>
+
+            <label class="required-label">本文</label>
+            <textarea th:field="*{text}" placeholder="本文" class="input-body" rows="8" required></textarea><br>
+
+            <label class="required-label">画像</label>
+            <input type="text" th:field="*{image}" class="input-file" required>
+            <label class="required-label">作者名</label>
+            <input type="text" th:field="*{author}" placeholder="作者名" class="input-author" required><br>
+
+            <div class="bottom">
+                <input type="submit" value="保存" class="btn-submit">
+                <a class="btn-cancel" href="/">キャンセル</a>
+            </div>
+        </form>
+    </div>
+</body>

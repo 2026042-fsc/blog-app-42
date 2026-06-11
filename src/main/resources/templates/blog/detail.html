@@ -20,6 +20,7 @@
             </p>
             <p class="author" th:text="${blog.author}">水野 遥</p>
             <p class="created_at" th:text="${blog.created_at}">日にち</p>
+            <a class="edit_at" th:href="@{/blog/{id}/edit(id=${blog.id})}">編集</a>
         </div>
 
     </div>
